@@ -7,6 +7,8 @@
   <h4 align="center">Rick and Morty interactive handbook (implemented via <a href="https://ionicframework.com/" target="_blank">Ionic</a> and <a href="https://uk.reactjs.org/" target="_blank">React</a>) 
 </h1>
 
+<img src="./Screenshot_initial.png" alt="Screenshot">
+
 # Functionality
 * Send GET requests to [Rick and Morty API](https://rickandmortyapi.com/documentation/) via [Capasitor](https://capacitorjs.com/docs)
 * Save watch list (used [Preferences](https://capacitorjs.com/docs/apis/preferences) as a storage)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Todo from './Todo/Todo';
 import { Preferences } from '@capacitor/preferences';
+import { CapacitorHttp } from '@capacitor/core';
 import "./List.css";
 
 const List = () => {
@@ -11,9 +12,22 @@ const List = () => {
 
   // Fetch episodes on name change
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/episode/?name=${name}`)
-      .then(response => response.json())
-      .then(data => setEpisodes(data.results));
+    const fetchEpisodes = async () => {
+      try {
+        const response = await CapacitorHttp.get({
+          url: `https://rickandmortyapi.com/api/episode/?name=${name}`,
+        });
+        setEpisodes(response.data.results);
+      } catch (error) {
+        console.error("Error fetching episodes:", error);
+      }
+    };
+    
+    if (name) {
+      fetchEpisodes();
+    } else {
+      setEpisodes([]);
+    }
   }, [name]);
 
   // Get stored todo list from Capacitor Storage (Preferences)

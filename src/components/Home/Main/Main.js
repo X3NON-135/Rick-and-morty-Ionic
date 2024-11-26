@@ -19,7 +19,7 @@ const Main = () => {
     <div className="main">
       <div className="main__container container">
         <h3 className="main__container__title" data-aos="fade-down">
-          Know more about the 
+          Search info about
           <br />
           <ReactTyped  
             strings={strings}

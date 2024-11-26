@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CapacitorHttp } from '@capacitor/core';
 
 // import component styles
 import "./Locations.css";
@@ -26,24 +27,35 @@ const Locations = () => {
   const [dimension, setDimension] = useState("");
 
   useEffect(() => {
-    fetch(API + `?page=${page}&name=${name}&type=${type}&dimension=${dimension}`)
-    .then(res => res.json())
-    .then(data => {
-      setPagesCount(data.info.pages);
-      setLocations(data.results);
+    // Use Capacitor HTTP to fetch data
+    const getLocations = async () => {
+      try {
+        const response = await CapacitorHttp.get({
+          url: API + `?page=${page}&name=${name}&type=${type}&dimension=${dimension}`,
+        });
 
-      const typeOpt = [];
-      const dimensionOpt = [];
+        const data = response.data;
 
-      data.results.map((item) => {
-        typeOpt.push(item.type);
-        dimensionOpt.push(item.dimension);
-        return item;
-      });
+        setPagesCount(data.info.pages);
+        setLocations(data.results);
 
-      setTypeOptUpd([...new Set(typeOpt)]);
-      setDimensionOptUpd([...new Set(dimensionOpt)]);
-    })
+        const typeOpt = [];
+        const dimensionOpt = [];
+
+        data.results.map((item) => {
+          typeOpt.push(item.type);
+          dimensionOpt.push(item.dimension);
+          return item;
+        });
+
+        setTypeOptUpd([...new Set(typeOpt)]);
+        setDimensionOptUpd([...new Set(dimensionOpt)]);
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    };
+
+    getLocations();
   }, [dimension, name, type, page]);
 
   const PaginationChange = (event, page) => setPage(page);
