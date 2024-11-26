@@ -11,12 +11,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <IonApp>
-      {/* Wrap the app with IonReactRouter to enable routing in Ionic */}
+      {/* Wraping the app with IonReactRouter to enable routing in Ionic */}
       <IonReactRouter>
-        <IonHeader>
-          <IonToolbar>
-          </IonToolbar>
-        </IonHeader>
         <IonContent>
           {/* Main App Component */}
           <App />

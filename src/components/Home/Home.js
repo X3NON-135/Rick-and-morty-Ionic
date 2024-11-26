@@ -14,31 +14,16 @@ import Main from "./Main/Main";
 
 const Home = () => {
   return (
-    <section className="home" id="home">
-      <IonPage>
-        {/* Home section */}
-        {/* Header */}
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Home Header</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <Header />
+    <IonPage className="home" id="home">
+      {/* Home section */}
+      {/* Header */}
+      <Header />
 
-        {/* Main Content */}
-        <IonContent>
-          <Main />
-        </IonContent>
+      {/* Main Content */}
+        <Main />
 
-        {/* Footer */}
-        <IonFooter>
-          <IonToolbar>
-            <IonTitle>Home Footer</IonTitle>
-          </IonToolbar>
-        </IonFooter>
-        <Footer />
-      </IonPage>
-    </section>
+      <Footer />
+    </IonPage>
   );
 };
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import { IonHeader, IonToolbar, IonTitle, IonMenuButton, IonButtons, IonContent, IonList, IonItem, IonIcon, IonButton } from '@ionic/react'; 
 import { menuOutline, closeOutline } from 'ionicons/icons'; // Importing Ionic icons for menu and close
+import aos from 'aos';
+import 'aos/dist/aos.css';
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +27,7 @@ const Header = () => {
   }
 
   return (
-    <IonHeader ref={header}>
+    <IonHeader className="header" ref={header}>
       <IonToolbar className="header__nav container">
         <IonTitle className="header__nav__logo" data-aos="fade-right">Rick and Morty</IonTitle>
 

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Typed } from 'react-typed';
 import './Main.css';
 import aos from 'aos';
 import 'aos/dist/aos.css';
@@ -16,15 +15,9 @@ const Main = () => {
         <h3 className="main__container__title" data-aos="fade-down">
           Know more about the 
           <br />
-          <Typed 
-            strings={['cartoon', 'characters']}
-            typeSpeed={100}
-            backSpeed={100}
-            loop
-          />
         </h3>
         <IonButton 
-          href="#characters" 
+          href="/characters" 
           className="main__container__button" 
           data-aos="fade-up" 
           color="primary">

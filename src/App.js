@@ -11,7 +11,7 @@ import { home, people, film, location, list } from 'ionicons/icons';
 
 function App() {
   return (
-    <IonApp>
+    <IonApp className="App">
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
