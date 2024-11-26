@@ -1,0 +1,39 @@
+{
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/preferences": "^6.0.3",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@ionic/react": "^8.4.0",
+    "@ionic/react-router": "^8.4.0",
+    "@mui/material": "^6.1.8",
+    "aos": "^2.3.4",
+    "ionicons": "^7.4.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^5.0.1",
+    "react-typed": "^2.0.12"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0",
+    "react-devtools": "^6.0.1",
+    "vite": "^5.4.11"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

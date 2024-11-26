@@ -1,0 +1,175 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+@font-face {
+  font-family: stoney;
+  src: url("../../assets/fonts/stoney-billy/STONB___.TTF");
+}
+
+.episodes {
+  width: 100%;
+  background-color: $background;
+
+  &__container {
+    padding-top: 3rem;
+    @include flexCenter();
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .container__title {
+      text-align: center;
+      font-family: stoney;
+      color: $yellow;
+      text-shadow: 0 0 5px $yellow;
+      font-size: 30px;
+    }
+
+    .form {
+      width: 100%;
+      @include flexCenter();
+      flex-direction: column;
+      position: relative;
+    }
+
+    .container__input {
+      background-color: transparent;
+      border: 1px solid $yellow;
+      font-family: "Montserrat Alternates";
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      box-shadow: 0 0 7px $yellow;
+      color: $yellow;
+
+      &::placeholder {
+        color: #fff;
+        opacity: .7;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .container__dropdown {
+      width: 100%;
+      background-color: #fff;
+      list-style-type: none;
+
+      .dropdown__item {
+        cursor: pointer;
+        width: 100%; height: 50px;
+        @include flexJustifyCenterStart();
+        padding-left: 20px;
+        font-family: "Montserrat Alternates";
+
+        &:hover {
+          background-color: $yellow;
+        }
+      }
+    }
+
+    .container__episodes-wrap {
+      width: 100%;
+      padding: 0 2rem;
+
+      .episodes-wrap__episode {
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        background-color: $yellow;
+        border-radius: 10px;
+        box-shadow: 0 0 7px $yellow;
+        @include flexCenterStart();
+        flex-direction: column;
+        gap: 10px;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          opacity: .7!important;
+        }
+
+        &__number, &__name {
+          font-family: "Montserrat Alternates";
+          font-weight: 800;
+          color: #fff;
+          font-size: 21px;
+        }
+
+        &__name {
+          font-weight: 500;
+          font-size: 16px;
+
+          span {
+            font-family: "Montserrat Alternates";
+            font-weight: 800;
+          }
+        }
+
+        &__airDate {
+          font-family: "Montserrat Alternates";
+          font-weight: 600;
+          color: #fff;
+          font-size: 16px;
+
+          span {
+            font-family: "Montserrat Alternates";
+            font-weight: 800;
+          }
+        }
+
+        &__url {
+          font-family: "Montserrat Alternates";
+          font-weight: 800;
+          color: #fff;
+          font-size: 15px;
+
+          a {
+            text-decoration: none;
+            color: $background;
+            font-family: "Montserrat Alternates";
+            opacity: .7;
+
+            &:hover {
+              text-shadow: 0 0 1px $background;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .container__episodes-wrap {
+      width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .episodes-wrap__episode {
+      .episode__number {
+        width: 100%;
+        font-size: 29px;
+        text-align: center;
+      }
+
+      .episode____name {
+        font-size: 28px;
+      }
+
+      .episode____airDate {
+        font-size: 25px;
+      }
+
+      .episode____url {
+        font-size: 24px;
+      }
+    }
+  }
+
+}
+
+.container__navigation {
+  margin-bottom: 1.5rem;
+}
