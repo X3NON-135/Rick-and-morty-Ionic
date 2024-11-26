@@ -20,7 +20,7 @@ const Home = () => {
       <Header />
 
       {/* Main Content */}
-        <Main />
+      <Main />
 
       <Footer />
     </IonPage>
