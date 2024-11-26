@@ -12,7 +12,6 @@
 # Functionality
 * Send GET requests to [Rick and Morty API](https://rickandmortyapi.com/documentation/) via [Capasitor](https://capacitorjs.com/docs)
 * Save watch list (used [Preferences](https://capacitorjs.com/docs/apis/preferences) as a storage)
-* With [CronJob](https://cron.com/) API will send request to fetch/synchronize data every day at 8 AM
 # App Structure
 Based on Component-based Architecture and Single-Page Application (SPA) architecture:
 1. Routing
