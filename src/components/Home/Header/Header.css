@@ -18,7 +18,7 @@
     .header__nav__logo {
       font-family: stoney;
       color: #dada4d;
-      font-size: 25px;
+      font-size: 45px;
       text-align: center;
       animation: 1s ease-in-out onLoadShadowYellow forwards;
       text-decoration: none; }
@@ -33,7 +33,7 @@
         color: #fff;
         font-family: stoney;
         transition: all 0.4s;
-        font-size: 15px;
+        font-size: 25px;
         text-shadow: 0 0 10px #fff;
         animation: 1s ease-in-out onLoadShadowWhite forwards; }
         .header__nav__list__item__link:hover {

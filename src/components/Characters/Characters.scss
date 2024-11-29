@@ -8,7 +8,7 @@
 
 .characters {
   width: 100%;
-  background-color: $background;
+  background-color: black;
 
   .css-1p5q5e5-MuiStack-root>:not(style)+:not(style) {
     margin-top: 0!important;
@@ -29,7 +29,7 @@
 
       &__select, &__button {
         background-color: $yellow;
-        color: #fff;
+        color: #000000;
         padding: 12px;
         border: none;
         font-size: 15px;

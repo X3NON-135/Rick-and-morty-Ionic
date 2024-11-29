@@ -40,7 +40,7 @@
           color: #fff;
           font-family: stoney;
           transition: $transition;
-          font-size: 15px;
+          font-size: 45px;
           text-shadow: 0 0 10px #fff;
           animation: 1s ease-in-out onLoadShadowWhite forwards;
 
@@ -54,7 +54,7 @@
       @media screen and (max-width: 767px) {
         position: fixed;
         left: 0;
-        background-color: hsl(210, 32%, 4%);
+        background-color: hsl(210, 19%, 21%);
         width: 100%;
         padding-block: 3.5rem;
         transition: $transition!important;
