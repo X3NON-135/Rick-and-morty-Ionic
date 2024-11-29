@@ -18,6 +18,7 @@ Based on Component-based Architecture and Single-Page Application (SPA) architec
 2. State Management
 3. Ionic and React Components
 4. Backend + Capasitor
+5. Web + Android
 
 **The whole structure can be shown as next:**
 <pre>
@@ -55,6 +56,7 @@ App (React)
   - capasitor/core: v6.2.0
   - capasitor/android: v6.2.0
   - capasitor/preferences: v6.0.3
+
 
 # Quick start
 1) Clone this repository
