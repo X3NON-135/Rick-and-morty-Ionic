@@ -9,6 +9,7 @@
 
 <img src="./Screenshot_initial.png" alt="Screenshot">
 
+# Video result (mobile.mp4)
 <video width="320" height="240" controls>
   <source src="mobile.mp4" type="video/mp4">
   Your browser does not support the video tag.
