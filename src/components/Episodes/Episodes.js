@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { IonContent } from "@ionic/react";
 import './Episodes.css';
 
 // AOS
@@ -50,7 +51,7 @@ const Episodes = () => {
   };
 
   return (
-    <section className="episodes" id="episodes">
+    <IonContent className="episodes" id="episodes">
 
       {/* Container */}
       <div className="episodes__container container">
@@ -109,7 +110,7 @@ const Episodes = () => {
           onChange={PaginationChange}
         />
       </div>
-    </section>
+    </IonContent>
   );
 };
 

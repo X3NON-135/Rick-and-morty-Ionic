@@ -14,6 +14,8 @@ import {
 
 const Popup = ({ isOpen, info, handleClose }) => {
   return (
+    <IonContent>
+    
     <IonModal isOpen={isOpen} onDidDismiss={handleClose}>
       {/* Header Section */}
       <IonHeader>
@@ -23,7 +25,6 @@ const Popup = ({ isOpen, info, handleClose }) => {
       </IonHeader>
 
       {/* Content Section */}
-      <IonContent>
         <div className="popup__wrapper">
           <IonImg src={info.image} alt="character avatar" />
           <IonList>
@@ -67,13 +68,14 @@ const Popup = ({ isOpen, info, handleClose }) => {
             </IonItem>
           </IonList>
         </div>
-      </IonContent>
 
       {/* Footer Section */}
       <IonButton expand="block" onClick={handleClose}>
         Close
       </IonButton>
     </IonModal>
+    </IonContent>
+
   );
 };
 

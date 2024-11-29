@@ -3,7 +3,8 @@
 @import "./components/variables.scss";
 
 * {
-  padding: 0; margin: 0;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
   font-family: sans-serif;
 }
@@ -33,13 +34,13 @@ body {
     color: #fff;
 
     &:hover {
-      background-color: $yellow!important;
+      background-color: $yellow !important;
       opacity: .8;
     }
   }
 
   .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-    background-color: $yellow!important;
+    background-color: $yellow !important;
     opacity: .8;
   }
 

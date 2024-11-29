@@ -9,6 +9,11 @@
 
 <img src="./Screenshot_initial.png" alt="Screenshot">
 
+<video width="320" height="240" controls>
+  <source src="mobile.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 # Functionality
 * Send GET requests to [Rick and Morty API](https://rickandmortyapi.com/documentation/) via [Capasitor](https://capacitorjs.com/docs)
 * Save watch list (used [Preferences](https://capacitorjs.com/docs/apis/preferences) as a storage)

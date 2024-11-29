@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { CapacitorHttp } from '@capacitor/core';
-import './Characters.css';
-import aos from 'aos';
-import 'aos/dist/aos.css';
+import React, { useState, useEffect } from "react";
+import { CapacitorHttp } from "@capacitor/core";
+import { IonContent } from "@ionic/react";
+import "./Characters.css";
+import aos from "aos";
+import "aos/dist/aos.css";
 
 // Pagination links
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Filter from './Filter/Filter';
-import Popup from './Popup/Popup';
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Filter from "./Filter/Filter";
+import Popup from "./Popup/Popup";
 
 // API link
 const API = "https://rickandmortyapi.com/api/character/";
 
 const Characters = () => {
-  const [pages, setPages] = useState(0);
+  const [pages, setPages] = useState(1);
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState("");
 
@@ -30,7 +31,7 @@ const Characters = () => {
 
   const [page, setPage] = useState(1);
 
-  const handleClickOpen = character => {
+  const handleClickOpen = (character) => {
     setOpen(true);
 
     setInfo({
@@ -43,14 +44,14 @@ const Characters = () => {
       status: character.status,
     });
 
-    document.body.style.overflow = 'hidden';
-    document.querySelector(".hide").style.opacity = '.5';
+    document.body.style.overflow = "hidden";
+    document.querySelector(".hide").style.opacity = ".5";
   };
 
   const handleClose = () => {
     setOpen(false);
-    document.body.style.overflow = 'scroll';
-    document.querySelector(".hide").style.opacity = '1';
+    document.body.style.overflow = "scroll";
+    document.querySelector(".hide").style.opacity = "1";
   };
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const Characters = () => {
     const fetchData = async () => {
       try {
         const response = await CapacitorHttp.get({
-          url: `${API}?page=${page}&species=${species}&status=${status}&gender=${gender}`
+          url: `${API}?page=${page}&species=${species}&status=${status}&gender=${gender}`,
         });
         const data = response.data;
 
@@ -90,61 +91,71 @@ const Characters = () => {
   const PaginationChange = (event, page) => setPage(page);
 
   return (
-    <section className="characters" id="characters">
-      <div className="characters__container container">
-        <h1 className="container__title">Characters</h1>
+    <IonContent>
+      <div className="characters" id="characters">
+        <div className="characters__container container">
+          <h1 className="container__title">Characters</h1>
 
-        {/* Filter */}
-        <Filter
-          species={speciesOptUpd}
-          status={statusOptUpd}
-          gender={genderOptUpd}
-          setSpecies={setSpecies}
-          setStatus={setStatus}
-          setGender={setGender}
-        />
+          {/* Filter */}
+          <Filter
+            species={speciesOptUpd}
+            status={statusOptUpd}
+            gender={genderOptUpd}
+            setSpecies={setSpecies}
+            setStatus={setStatus}
+            setGender={setGender}
+          />
 
-        <Stack spacing={2} className="container__pagination hide">
-          {characters.map((item, key) => (
-            <div data-aos="fade-right" className="pagination__character" key={key}>
-              <button
-                variant="outlined"
-                className="character__button"
-                onClick={() => handleClickOpen(item)}
-              ></button>
+          <Stack spacing={2} className="container__pagination hide">
+            {characters.map((item, key) => (
+              <div
+                
+                className="pagination__character"
+                key={key}
+              >
+                <button
+                  variant="outlined"
+                  className="character__button"
+                  onClick={() => handleClickOpen(item)}
+                ></button>
 
-              <img src={item.image} alt={"image" + key} className="character__image" />
-              <div className="character__addInfo">
-                <h2 className="addInfo__name">{item.name}</h2>
-                <h3 className="addInfo__location">
-                  From <span>{item.location.name}</span>
-                </h3>
-                <p className="addInfo__species">
-                  Species <span>{item.species}</span>
-                </p>
-                <p className="addInfo__status">
-                  Status <span>{item.status}</span>
-                </p>
-                <p className="addInfo__gender">
-                  Gender <span>{item.gender}</span>
-                </p>
+                <img
+                  src={item.image}
+                  alt={"image" + key}
+                  className="character__image"
+                />
+                <div className="character__addInfo">
+                  <h2 className="addInfo__name">{item.name}</h2>
+                  <h3 className="addInfo__location">
+                    From <span>{item.location.name}</span>
+                  </h3>
+                  <p className="addInfo__species">
+                    Species <span>{item.species}</span>
+                  </p>
+                  <p className="addInfo__status">
+                    Status <span>{item.status}</span>
+                  </p>
+                  <p className="addInfo__gender">
+                    Gender <span>{item.gender}</span>
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </Stack>
+            ))}
+          </Stack>
 
-        {/* Popup */}
-        <Popup isOpen={isOpen} info={info} handleClose={handleClose} />
+          {/* Popup */}
+          <Popup isOpen={isOpen} info={info} handleClose={handleClose} />
 
-        {/* Pagination */}
-        <Pagination
-          className="characters__container__navigation container__navigation"
-          count={pages}
-          page={page}
-          onChange={PaginationChange}
-        />
+          {/* Pagination */}
+          <Pagination
+            className="characters__container__navigation container__navigation"
+            count={pages}
+            page={page}
+            onChange={PaginationChange}
+          />
+        </div>
       </div>
-    </section>
+    </IonContent>
   );
 };
 

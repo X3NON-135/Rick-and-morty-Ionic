@@ -13,10 +13,9 @@ root.render(
     <IonApp>
       {/* Wraping the app with IonReactRouter to enable routing in Ionic */}
       <IonReactRouter>
-        <IonContent>
+       
           {/* Main App Component */}
           <App />
-        </IonContent>
       </IonReactRouter>
     </IonApp>
   </React.StrictMode>
