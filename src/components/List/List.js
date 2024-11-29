@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Todo from './Todo/Todo';
 import { Preferences } from '@capacitor/preferences';
 import { CapacitorHttp } from '@capacitor/core';
+import { IonContent } from "@ionic/react";
 import "./List.css";
 
 const List = () => {
@@ -74,7 +75,8 @@ const List = () => {
   const sortedTodo = todoList.sort((a, b) => b.isChecked - a.isChecked);
 
   return (
-    <section className="watchList" id="watchList">
+    <IonContent>
+    <div className="watchList" id="watchList">
       <div className="watchList__container container">
         <h1 className="container__title">my watch list</h1>
         <h3 className="container__noTodo">{sortedTodo[0] === undefined ? "Add episodes you want to watch later" : ""}</h3>
@@ -114,7 +116,8 @@ const List = () => {
           )) : null}
         </div>
       </div>
-    </section>
+    </div>
+    </IonContent>
   );
 };
 

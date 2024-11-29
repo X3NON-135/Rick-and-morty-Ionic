@@ -62,13 +62,10 @@ const Locations = () => {
 
   // HTML
   return (
-    <IonPage id="locations">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Locations</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="locations">
+    <IonContent>
+      <div className="locations"  id="locations">
+        <div className="locations__container container">
+          <h1 className="container__title">Locations</h1>
         {/* Filters */}
         <Filter
           name={name}
@@ -103,8 +100,9 @@ const Locations = () => {
           page={page}
           onChange={PaginationChange}
         />
+        </div>
+      </div>
       </IonContent>
-    </IonPage>
   );
 }
 
