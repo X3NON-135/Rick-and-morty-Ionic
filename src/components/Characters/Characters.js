@@ -1,94 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { CapacitorHttp } from "@capacitor/core";
+import React, { useEffect } from "react";
 import { IonContent } from "@ionic/react";
-import "./Characters.css";
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
 import aos from "aos";
 import "aos/dist/aos.css";
+import "./Characters.css";
 
-// Pagination links
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import Filter from "./Filter/Filter";
 import Popup from "./Popup/Popup";
+import CharacterCard from "./CharacterCard";
 
-// API link
-const API = "https://rickandmortyapi.com/api/character/";
+import useCharacters from "./hooks/useCharacters";
+import useModal from "./hooks/useModal";
 
 const Characters = () => {
-  const [pages, setPages] = useState(1);
-  const [characters, setCharacters] = useState([]);
-  const [info, setInfo] = useState("");
+  const {
+    characters,
+    pages,
+    page,
+    setPage,
+    filterOptions,
+    filters,
+    setFilters,
+  } = useCharacters();
 
-  const [isOpen, setOpen] = useState(false);
-
-  let [speciesOptUpd, setSpeciesOptUpd] = useState([]);
-  let [statusOptUpd, setStatusOptUpd] = useState([]);
-  let [genderOptUpd, setGenderOptUpd] = useState([]);
-
-  const [species, setSpecies] = useState([]);
-  const [status, setStatus] = useState([]);
-  const [gender, setGender] = useState([]);
-
-  const [page, setPage] = useState(1);
-
-  const handleClickOpen = (character) => {
-    setOpen(true);
-
-    setInfo({
-      image: character.image,
-      name: character.name,
-      episode: character.episode[0],
-      gender: character.gender,
-      location: character.location.name,
-      species: character.species,
-      status: character.status,
-    });
-
-    document.body.style.overflow = "hidden";
-    document.querySelector(".hide").style.opacity = ".5";
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    document.body.style.overflow = "scroll";
-    document.querySelector(".hide").style.opacity = "1";
-  };
+  const { isOpen, openModal, closeModal, selectedCharacter } = useModal();
 
   useEffect(() => {
     aos.init();
-
-    const fetchData = async () => {
-      try {
-        const response = await CapacitorHttp.get({
-          url: `${API}?page=${page}&species=${species}&status=${status}&gender=${gender}`,
-        });
-        const data = response.data;
-
-        setPages(data.info.pages);
-        setCharacters(data.results);
-
-        const speciesOpt = [];
-        const statusOpt = [];
-        const genderOpt = [];
-
-        data.results.forEach((item) => {
-          speciesOpt.push(item.species);
-          statusOpt.push(item.status);
-          genderOpt.push(item.gender);
-        });
-
-        setSpeciesOptUpd([...new Set(speciesOpt)]);
-        setStatusOptUpd([...new Set(statusOpt)]);
-        setGenderOptUpd([...new Set(genderOpt)]);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [gender, species, status, page]);
-
-  const PaginationChange = (event, page) => setPage(page);
+  }, []);
 
   return (
     <IonContent>
@@ -96,62 +36,30 @@ const Characters = () => {
         <div className="characters__container container">
           <h1 className="container__title">Characters</h1>
 
-          {/* Filter */}
           <Filter
-            species={speciesOptUpd}
-            status={statusOptUpd}
-            gender={genderOptUpd}
-            setSpecies={setSpecies}
-            setStatus={setStatus}
-            setGender={setGender}
+            {...filterOptions}
+            setSpecies={(species) => setFilters((f) => ({ ...f, species }))}
+            setStatus={(status) => setFilters((f) => ({ ...f, status }))}
+            setGender={(gender) => setFilters((f) => ({ ...f, gender }))}
           />
 
           <Stack spacing={2} className="container__pagination hide">
-            {characters.map((item, key) => (
-              <div
-                
-                className="pagination__character"
-                key={key}
-              >
-                <button
-                  variant="outlined"
-                  className="character__button"
-                  onClick={() => handleClickOpen(item)}
-                ></button>
-
-                <img
-                  src={item.image}
-                  alt={"image" + key}
-                  className="character__image"
-                />
-                <div className="character__addInfo">
-                  <h2 className="addInfo__name">{item.name}</h2>
-                  <h3 className="addInfo__location">
-                    From <span>{item.location.name}</span>
-                  </h3>
-                  <p className="addInfo__species">
-                    Species <span>{item.species}</span>
-                  </p>
-                  <p className="addInfo__status">
-                    Status <span>{item.status}</span>
-                  </p>
-                  <p className="addInfo__gender">
-                    Gender <span>{item.gender}</span>
-                  </p>
-                </div>
-              </div>
+            {characters.map((character) => (
+              <CharacterCard
+                key={character.id}
+                character={character}
+                onClick={() => openModal(character)}
+              />
             ))}
           </Stack>
 
-          {/* Popup */}
-          <Popup isOpen={isOpen} info={info} handleClose={handleClose} />
+          <Popup isOpen={isOpen} info={selectedCharacter} handleClose={closeModal} />
 
-          {/* Pagination */}
           <Pagination
             className="characters__container__navigation container__navigation"
             count={pages}
             page={page}
-            onChange={PaginationChange}
+            onChange={(_, value) => setPage(value)}
           />
         </div>
       </div>
