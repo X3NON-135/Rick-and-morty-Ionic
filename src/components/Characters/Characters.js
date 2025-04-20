@@ -16,15 +16,20 @@ import useModal from "./hooks/useModal";
 const Characters = () => {
   const {
     characters,
-    pages,
     page,
+    pages,
     setPage,
-    filterOptions,
     filters,
     setFilters,
+    filterOptions,
   } = useCharacters();
 
-  const { isOpen, openModal, closeModal, selectedCharacter } = useModal();
+  const {
+    isOpen,
+    selectedCharacter,
+    openModal,
+    closeModal,
+  } = useModal();
 
   useEffect(() => {
     aos.init();
@@ -37,13 +42,12 @@ const Characters = () => {
           <h1 className="container__title">Characters</h1>
 
           <Filter
-            {...filterOptions}
-            setSpecies={(species) => setFilters((f) => ({ ...f, species }))}
-            setStatus={(status) => setFilters((f) => ({ ...f, status }))}
-            setGender={(gender) => setFilters((f) => ({ ...f, gender }))}
+            filterOptions={filterOptions}
+            filters={filters}
+            onChange={setFilters}
           />
 
-          <Stack spacing={2} className="container__pagination hide">
+          <Stack spacing={2} className="container__pagination">
             {characters.map((character) => (
               <CharacterCard
                 key={character.id}
